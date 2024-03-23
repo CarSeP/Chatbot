@@ -1,5 +1,4 @@
 import { Injectable, signal } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HfInference } from '@huggingface/inference';
 
 @Injectable({
@@ -7,7 +6,7 @@ import { HfInference } from '@huggingface/inference';
 })
 export class MessagesService {
 
-  hf = new HfInference(environment.API_KEY)
+  hf = new HfInference("")
   model = "mistralai/Mistral-7B-Instruct-v0.2"
   conversation = signal<any[]>([])
   loading = signal(false)
