@@ -1,31 +1,31 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HfInference } from '@huggingface/inference';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
-  API_KEY = '';
-  URL = 'https://api.openai.com/v1/completions';
-  conversation: string[] = [];
-  http = inject(HttpClient);
 
-  addMessage(prompt: string) {
-    const requestBody = JSON.stringify({
-      model: 'gpt-3.5-turbo-instruct',
-      prompt: prompt,
-      max_tokens: 1000,
-      temperature: 0,
-    });
+  hf = new HfInference(environment.API_KEY)
+  model = "mistralai/Mistral-7B-Instruct-v0.2"
+  conversation = signal<any[]>([])
+  loading = signal(false)
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.API_KEY}`,
-    });
+  async addMessage(prompt: string) {
+    this.loading.set(true)
 
-    this.http.post(this.URL, requestBody, { headers }).subscribe((res: any) => {
-      this.conversation.push(prompt);
-      this.conversation.push(res.choices[0].text);
-    });
+    const IAMessage = await this.hf.textGeneration({
+      accessToken: this.hf,
+      model: this.model,
+      inputs: prompt,
+      parameters: {
+        max_length: 100
+      }
+    })
+
+    this.conversation.update(values => [...values, prompt, IAMessage.generated_text])
+    this.loading.set(false)
   }
+
 }

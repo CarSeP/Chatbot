@@ -11,6 +11,6 @@ import { MessagesService } from '../../services/messages.service';
 })
 export class ChatComponent {
   messajesService = inject(MessagesService)
-  a = this.messajesService.conversation
+  conversation = this.messajesService.conversation
 
 }
