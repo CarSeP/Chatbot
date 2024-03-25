@@ -1,13 +1,37 @@
 <header class="flex sm:items-center justify-between ml-5 border-b-2 border-gray-200">
-    <div class="relative flex items-center space-x-4">
-       <div class="relative">
-       <img src="./../assets/svg/Robot.svg" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
-       </div>
-       <div class="flex flex-col leading-tight">
-          <div class="text-2xl mt-1 flex items-center">
-             <span class="text-gray-700 mr-3">Chatbot AI</span>
-          </div>
-          <span class="text-lg text-gray-600">Virtual assistant</span>
-       </div>
-    </div>
- </header>
+
+   <div class="relative flex items-center space-x-4">
+      <div class="relative">
+         <img src="./../assets/svg/RobotDark.svg" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full dark:hidden">
+         <img src="./../assets/svg/RobotWhite.svg" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full hidden dark:block">
+      </div>
+      <div class="flex flex-col leading-tight">
+         <div class="text-2xl mt-1 flex items-center">
+            <span class="text-gray-700 mr-3 dark:text-white">Chatbot AI</span>
+         </div>
+         <span class="text-lg text-gray-600 dark:text-white">Virtual assistant</span>
+      </div>
+   </div>
+
+   <div class="flex items-center mr-10 sm:block sm:mr-20">
+      <button
+         class="w-20 h-10 border border-black rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
+         (click)="toggleTheme()">
+         <div id="switch-toggle"
+            class="w-12 h-12 relative rounded-full transition duration-500 transform p-1 text-white"
+            [ngClass]="{'bg-yellow-500 -translate-x-2' : !darkMode(),'bg-gray-700 translate-x-full' : darkMode()}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+               [class.hidden]="darkMode()">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+               [class.hidden]="!darkMode()">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+         </div>
+      </button>
+   </div>
+
+</header>

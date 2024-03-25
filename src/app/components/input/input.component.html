@@ -1,10 +1,11 @@
 <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
     <div class="relative flex">
-        <input type="text" placeholder="Write your message!" [(ngModel)]="prompt" (keydown)="(keydown($event))" [disabled]="messajesService.loading()"
-            class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3">
+        <input type="text" placeholder="Write your message!" [(ngModel)]="prompt" (keydown)="(keydown($event))"
+            [disabled]="messajesService.loading()"
+            class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3 dark:bg-inputDark dark:text-white dark:placeholder-white">
         <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
             <button type="button" (click)="send()" [disabled]="messajesService.loading()"
-                class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
+                class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 dark:bg-buttonDark hover:dark:bg-buttonDarkHover focus:outline-none">
                 <span class="font-bold">Send</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                     class="h-6 w-6 ml-2 transform rotate-90">
