@@ -1,6 +1,6 @@
 # Chatbot AI With Angular 17
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+This project was created with Angular 17, Tailwind CSS and the model was `mistralai/Mistral-7B-Instruct-v0.2` taken from `https://huggingface.co`.
 
 ### Installation
 
@@ -16,8 +16,5 @@ npm install
 ##### 3. Start the project
 ```
 ng serve
-go to http://localhost:4200
 ```
-### Model
-
-`mistralai/Mistral-7B-Instruct-v0.2`
+##### 4. Go to `http://localhost:4200`
